@@ -32,20 +32,20 @@
             </form>
         </div>
         <div id="contact-panel" class="panel" v-show="activeDisplay == 'add'">
-            <form action="#">
+            <form @submit.prevent="addContact" >
                 <h1>افزودن مخاطب</h1>
                 <div class="row">
                     <div class="col-lg-6">
                         <label for="">نام و نام خانوادگی :</label>
-                        <input type="text" name="person" id="name" placeholder="محمد اشرافی" />
+                        <input v-model="contact.name" type="text" name="person" id="name" placeholder="محمدرضا سرخیل"  required/>
                     </div>
                     <div class="col-lg-6">
                         <label for="">شماره تماس :</label>
-                        <input type="text" name="phone" id="name" placeholder="09350000000" />
+                        <input  v-model="contact.phone" type="text" name="phone" id="name" placeholder="09350000000" required/>
                     </div>
                     <div class="col-lg-12 mt-3">
                         <label for=""> ایمیل :</label>
-                        <input type="text" name="email" id="name" placeholder="mohammad.ashrafi2020@outlook.com" />
+                        <input v-model="contact.email" type="text" name="email" id="name" placeholder="test@test.com" required/>
                     </div>
                 </div>
                 <div>
@@ -54,7 +54,26 @@
             </form>
         </div>
         <div id="show-panel" class="panel" v-show="activeDisplay == 'all'"> 
-
+            <table class="table table-bordered table-striped text-center">
+                <thead class="table-dark">
+                  <tr>
+                    <th>نام و نام خانوادگی</th>
+                    <th>شماره موبایل</th>
+                    <th>ایمیل</th>
+                    <th>حذف</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr v-for=" item in contacts">
+                    <td> {{item.name}}</td>
+                    <td> {{item.phone}}</td>
+                    <td> {{item.email}}</td>
+                    <td>
+                      <button class="btn btn-danger btn-sm">حذف</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
         </div>
     </div>
     <script src="app.js"></script>
