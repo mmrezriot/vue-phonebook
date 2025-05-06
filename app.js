@@ -22,7 +22,7 @@ const app = Vue.createApp({
            this.contacts.push(this.contact);
            this.activeDisplay='all';
            this.contact= {};
-
+           toastr.success('مخاطب اضافه شد.')
 
         }
         
