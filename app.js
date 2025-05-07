@@ -2,14 +2,13 @@ const app = Vue.createApp({
     data() {
         return {
             activeDisplay : 'all',
-            contacts : [
-
-            ],
+            contacts : [],
             contact :{
                 name : '',
                 phone :'',
                 email:''
-            }
+            },
+            searchResults:[]
 
         }
     },
@@ -41,12 +40,26 @@ const app = Vue.createApp({
            toastr.error('کاربر حذف شد.');
 
         }
+          },
+          searchContact() {
+            if (!this.searchQuery.trim()) {
+              this.searchResults = [];
+              return;
+            }
+          
+            this.searchResults = this.contacts.filter(contact =>
+              contact.name.toLowerCase().includes(this.searchQuery.toLowerCase())
+            );
           }
-            
-        
-        
-
     },
+    // computed: {
+    //     filteredContacts() {
+    //       if (!this.searchQuery.trim()) return [];
+    //       return this.contacts.filter(contact =>
+    //         contact.name.toLowerCase().includes(this.searchQuery.toLowerCase())
+    //       );
+    //     }
+    //   }
 });
 
 app.mount("#app");
