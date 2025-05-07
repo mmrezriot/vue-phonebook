@@ -70,7 +70,7 @@
                     <td> {{item.phone}}</td>
                     <td> {{item.email}}</td>
                     <td>
-                      <button class="btn btn-danger btn-sm">حذف</button>
+                      <button class="btn btn-danger btn-sm" @click="deleteContact(item.index)">حذف</button>
                     </td>
                   </tr>
                 </tbody>
